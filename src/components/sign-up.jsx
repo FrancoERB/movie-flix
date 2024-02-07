@@ -1,6 +1,8 @@
 import { Formik } from 'formik';
+import { useAuth } from '../context/User';
 
-const SignUp = (handleSubmit, validationSchema) => {
+const SignUp = () => {
+    const {handleSubmitCreateSessionData, validationSchemaInputsRegister} = useAuth();
 
     return(
         <div className="flex items-center justify-center min-h-screen min-w-screen bg-custom-background">
@@ -8,8 +10,8 @@ const SignUp = (handleSubmit, validationSchema) => {
             <h2 className=" flex text-2xl font-bold w-full text-white mb-4">Registro</h2>
             <Formik
             initialValues={{ email: '', password: '', repeatPassword:',' }}
-            validationSchema={validationSchema}
-            onSubmit={handleSubmit}
+            validationSchema={validationSchemaInputsRegister}
+            onSubmit={handleSubmitCreateSessionData}
             >
             {({
                 values,
@@ -30,7 +32,7 @@ const SignUp = (handleSubmit, validationSchema) => {
                     onBlur={handleBlur}
                     value={values.email}
                 />
-                {errors.email && touched.email && errors.email}
+                <p className='text-red-500'>{errors.email && touched.email && errors.email}</p>
                 <p className='flex text-white font-bold text-sm mt-1'>Contraseña</p>
                 <input
                     className='flex h-12 rounded-sm'
@@ -40,7 +42,7 @@ const SignUp = (handleSubmit, validationSchema) => {
                     onBlur={handleBlur}
                     value={values.password}
                 />
-                {errors.password && touched.password && errors.password}
+                <p className='text-red-500'>{errors.password && touched.password && errors.password}</p>
                 <p className='flex text-white font-bold text-sm mt-1'>Repetir contraseña</p>
                 <input
                     className='flex h-12 rounded-sm'
@@ -50,7 +52,7 @@ const SignUp = (handleSubmit, validationSchema) => {
                     onBlur={handleBlur}
                     value={values.repeatPassword}
                 />
-                {errors.repeatPassword && touched.repeatPassword && errors.repeatPassword}
+                <p className='text-red-500'>{errors.repeatPassword && touched.repeatPassword && errors.repeatPassword}</p>
                 <button className='flex px-14 py-4 rounded-sm mt-3 justify-center text-white  bg-red-800 font-bold' type="submit" disabled={isSubmitting}>
                     Confirmar
                 </button>

@@ -1,15 +1,16 @@
 import { Formik } from 'formik';
+import { useAuth } from '../context/User';
 
- const Login = ({handleSubmit, validationSchema}) => {
-    
+ const Login = () => {
+    const {handleSubmitLoginData, validationSchemaInputsLogin} = useAuth();
     return(
         <div className="flex bg-custom-background items-center justify-center rounded-xl min-h-screen min-w-full">
             <div className=" flex flex-col  w-1/3 min-h-96 bg-gradient-to-b from-pale-sky-300 to-pale-sky-100 p-12 rounded-xl shadow-md">
                 <h2 className="text-2xl font-bold text-white mb-4">Iniciar sesión</h2>
                 <Formik
                 initialValues={{ email: '', password: '' }}
-                validationSchema={validationSchema}
-                onSubmit={handleSubmit}
+                validationSchema={validationSchemaInputsLogin}
+                onSubmit={handleSubmitLoginData}
                 >
                 {({
                     values,
@@ -30,7 +31,7 @@ import { Formik } from 'formik';
                         onBlur={handleBlur}
                         value={values.email}
                     />
-                    {errors.email && touched.email && errors.email}
+                    <p className='text-red-500'>{errors.email && touched.email && errors.email}</p>
                     <p className='flex text-white font-bold text-sm mt-1'>Contraseña</p>
                     <input
                         className='flex h-12 rounded-sm'
@@ -40,7 +41,7 @@ import { Formik } from 'formik';
                         onBlur={handleBlur}
                         value={values.password}
                     />
-                    {errors.password && touched.password && errors.password}
+                    <p className='text-red-500'>{errors.password && touched.password && errors.password}</p>
                     <button className='flex px-14 py-4 rounded-sm mt-3 justify-center text-white  bg-red-800' type="submit" disabled={isSubmitting}>
                         Confirmar
                     </button>

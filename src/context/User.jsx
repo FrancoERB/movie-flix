@@ -1,12 +1,15 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useContext } from "react"
 import Swal from "sweetalert2";
 import { getAuth, signInWithEmailAndPassword,  createUserWithEmailAndPassword } from "firebase/auth";
 import * as Yup from 'yup';
+import { useNavigate } from "react-router-dom";
+
 export const AuthContext = createContext();
 
 export const AuthProvider = ({children}) => {
     const [token, setToken] = useState('');
-    
+    const navigation = useNavigate();
+
     //Manejo de inputs para evitar errores de entrada//
     const validationSchemaInputsLogin = Yup.object({
         email: Yup.string().email('Formato de correo electrónico no válido').required('Este campo es obligatorio'),
@@ -21,7 +24,7 @@ export const AuthProvider = ({children}) => {
       });
     
     //Validacion de datos de usuario en firebase//
-      const handleSubmitLoginData = (values, { setSubmitting }) => {
+    const handleSubmitLoginData = (values, { setSubmitting }) => {
         setSubmitting(true);
         const auth = getAuth();
         signInWithEmailAndPassword(auth, values.email, values.password)
@@ -30,7 +33,7 @@ export const AuthProvider = ({children}) => {
             const userToken = user.stsTokenManager.accessToken;
             sessionStorage.setItem('token', JSON.stringify(userToken));
             setToken(userToken);
-            Swal.fire('Autenticación exitosa', '¡Bienvenido!', 'success');
+            Swal.fire('¡Bienvenido!', 'success');
             navigation('/Movies');
             
         })
@@ -54,8 +57,8 @@ export const AuthProvider = ({children}) => {
             .then((userCredential) => {
                 const user = userCredential.user;
                 console.log('Usuario autenticado:', user);
-                Swal.fire('Autenticación exitosa', '¡Bienvenido!', 'success');
-                navigation('/Movies')
+                Swal.fire('Creación de usuario exitosa', 'Inicie sesion con sus datos', 'success');
+                navigation('/')
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -79,3 +82,4 @@ export const AuthProvider = ({children}) => {
         </AuthContext.Provider>
     )
 }
+export const useAuth = () => useContext(AuthContext);
