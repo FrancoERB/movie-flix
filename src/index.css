@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .bg-custom-background {
+      background-image: url('../src/assets/background.jpg');
+      background-size: contain;
+      background-position: center;
+    }
+  }
