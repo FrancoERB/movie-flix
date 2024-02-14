@@ -1,6 +1,6 @@
 import { createContext, useState, useContext } from "react"
 import Swal from "sweetalert2";
-import { getAuth, signInWithEmailAndPassword,  createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword,  createUserWithEmailAndPassword, updateProfile} from "firebase/auth";
 import * as Yup from 'yup';
 import { useNavigate } from "react-router-dom";
 
@@ -21,6 +21,7 @@ export const AuthProvider = ({children}) => {
         repeatPassword: Yup.string()
         .oneOf([Yup.ref('password'), null], 'Las contraseñas deben coincidir')
         .required('Este campo es obligatorio'),
+        displayName: Yup.string().min(5, 'Debe ingresar su nombre completo').required('Este campo es obligatorio'),
       });
     
     //Validacion de datos de usuario en firebase//
@@ -31,6 +32,7 @@ export const AuthProvider = ({children}) => {
         .then((userCredential) => {
             const user = userCredential.user;
             const userToken = user.stsTokenManager.accessToken;
+            sessionStorage.setItem('userName', user.displayName);
             sessionStorage.setItem('token', JSON.stringify(userToken));
             setToken(userToken);
             Swal.fire('¡Bienvenido!', 'success');
@@ -53,10 +55,12 @@ export const AuthProvider = ({children}) => {
         setSubmitting(true);
     
         const auth = getAuth();
-        createUserWithEmailAndPassword(auth, values.email, values.password)
+        createUserWithEmailAndPassword(auth, values.email, values.password, values.displayName)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log('Usuario autenticado:', user);
+                updateProfile(auth.currentUser, {
+                    displayName: values.displayName
+                  })
                 Swal.fire('Creación de usuario exitosa', 'Inicie sesion con sus datos', 'success');
                 navigation('/')
             })

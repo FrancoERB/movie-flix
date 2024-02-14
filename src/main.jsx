@@ -3,14 +3,17 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
-import { AuthProvider } from './contextProvider/AuthProvider.jsx'
+import { AuthProvider } from './context/User.jsx'
+import { MoviesProvider } from './context/Movies.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <App />
-      </AuthProvider>
-    </BrowserRouter>
+        <MoviesProvider>
+            <App />
+        </MoviesProvider>
+    </AuthProvider>
+  </BrowserRouter>
   </React.StrictMode>,
 )
