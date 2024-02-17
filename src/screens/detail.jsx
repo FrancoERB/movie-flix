@@ -34,13 +34,15 @@ export const Detail = () => {
     return(
         <>
             {movie ?
-                <div className='flex flex-col w-full min-h-screen bg-cover bg-center' style={{
+                <div className='flex flex-col w-full min-h-screen bg-cover bg-center mt-10' style={{
                     backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path}.jpg)`
                 }}>
-                    <div className=' flex flex-row backdrop-brightness-50' style={{
+                    <div className=' flex md:flex-row sm:flex-col h-screen backdrop-brightness-50 md:mt-9 sm:mt-3' style={{
                     }}>
-                        <img className='flex w-2/6 h-lvh m-2 mt-8 rounded-md' src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}.jpg`} alt=''/>
-                        <div className='flex flex-col w-full h-96 mt-8 mr-2 rounded-md'>
+                        <div className='flex sm:w-full md:w-96 h-[450px]'>
+                        <img className='flex w-full h-full m-2 mt-8 rounded-md' src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}.jpg`} alt=''/>
+                        </div>
+                        <div className='flex flex-col w-full h-96 mt-8 md:mx-11 rounded-md'>
                         {!showTrailer?
                             <>
                             <h2 className='text-3xl font-bold ml-2 mt-4 text-white'>{movie.title} ({movie.release_date.split('-')[0]})</h2>

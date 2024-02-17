@@ -22,6 +22,12 @@ export default {
           900: '#000000',
           950: '#000000'
         },
+      },
+      screens: {
+        'sm': '320px', // Establecer 640px como ancho mínimo para sm
+        'md': '640px',
+        'lg': '1024px',
+        'xl': '1280px',
       }
     },
   },

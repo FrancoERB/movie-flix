@@ -5,7 +5,7 @@ import { useAuth } from '../context/User';
     const {handleSubmitLoginData, validationSchemaInputsLogin} = useAuth();
     return(
         <div className="flex bg-custom-background items-center justify-center rounded-xl min-h-screen min-w-full">
-            <div className=" flex flex-col  w-1/3 min-h-96 bg-gradient-to-b from-pale-sky-300 to-pale-sky-100 p-12 rounded-xl shadow-md">
+            <div className=" flex flex-col w-full sm:w-2/3 md:w-1/2 lg:w-1/3 bg-gradient-to-b from-pale-sky-300 to-pale-sky-100 p-6 md:p-12 rounded-xl shadow-md">
                 <h2 className="text-2xl font-bold text-white mb-4">Iniciar sesión</h2>
                 <Formik
                 initialValues={{ email: '', password: '' }}

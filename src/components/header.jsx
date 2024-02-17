@@ -1,27 +1,30 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Avatar from "./avatar";
-import { MdModeNight, MdOutlineWbSunny  } from "react-icons/md";
+import { MdModeNight, MdOutlineWbSunny, MdMenu, MdClose  } from "react-icons/md";
+import { ResponsiveStyles } from "../utils/responsiveStyles";
 
 const Header = ({btnToggleTheme, theme}) => {
     const [prevScrollPos, setPrevScrollPos] = useState(0);
     const [visible, setVisible] = useState(true);
+    const [menuOpen, setMenuOpen] = useState(false);
     const [userName, setUserName] = useState(null);
-    const pathName = window.location.pathname;
+    const [pathName, setPathName] = useState(null);
   
     useEffect(() => {
+      setPathName(window.location.pathname);
+      console.log('path:', pathName);
       getUsername();
       const handleScroll = () => {
         const currentScrollPos = window.scrollY;
-  
         setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 25);
         setPrevScrollPos(currentScrollPos);
       };
-  
+      
       window.addEventListener('scroll', handleScroll);
   
       return () => window.removeEventListener('scroll', handleScroll);
-    }, [prevScrollPos, userName]);
+    }, [prevScrollPos, userName, pathName]);
 
     const getUsername = () => {
       const name = sessionStorage.getItem('userName');
@@ -29,42 +32,34 @@ const Header = ({btnToggleTheme, theme}) => {
     }
 
     return(
-        <header className={`flex items-center justify-between w-full h-16 sticky top-0 z-10 transition-colors duration-500 ${
-            visible ? 'bg-black' : ' bg-transparent backdrop-blur-md'}`}>
-              <div className='flex flex-row'>
-              {pathName === '/' && 
-                    <h2 className='text-3xl font-extrabold text-red-600'>MOVIEFLIX</h2>
-              }
-              {pathName !== '/' && 
-                <>
-                <h2 className=' text-3xl font-extrabold text-red-600'>MOVIEFLIX</h2>
-                <ul className={`flex flex-row justify-center items-center ${visible? 'text-gray-400' : 'text-red-600'} ml-3 gap-4 text-xl border-l-2 border-gray-500 px-2`}>
-                  <li>
-                    <Link to={'/Movies'}>Inicio</Link>
-                  </li>
-                  <li className='border-l-2 border-gray-500 px-2'>
-                    <Link>Favoritos</Link>
-                  </li>
-                </ul>
-
-                </>
-              }
-              </div>
-              
-             {userName && 
-             <div className='flex flex-row justify-center items-center w-fit h-full gap-1'>
-                <button onClick={btnToggleTheme}>
-                  {theme === 'light' ? 
-                    <MdModeNight className='text-yellow-200 w-7 h-7 mr-4'/> 
-                    : 
-                    <MdOutlineWbSunny className='text-yellow-200 w-7 h-7 mr-4'/>}
-                </button>
-                <Avatar avatarName={userName}/>
-                <p 
-                  className='flex w-fit h-full px-3 text-gray-400 text-2xl justify-center items-center font-semibold'>{userName}
-                </p>
+        <header className={`flex items-center w-full fixed top-0 left-0 z-10 transition-opacity duration-700 ${
+            visible ? 'bg-black' : 'opacity-0'}`}>
+             <div className='md:flex items-center justify-between py-4 md:px-10 px-7 w-full' id='container-main'>
+                  <div className='font-bold text-2xl cursor-pointer flex items-center text-gray-800' id='span-container'>
+                    <span className='font-bold text-2xl cursor-pointer text-red-600 mr-1'
+                    >MOVIE-FLIX
+                    </span>
+                  </div>
+                  <div onClick={() => setMenuOpen(!menuOpen)} className='text-3xl absolute right-8 top-5 cursor-pointer text-white md:hidden' id='container-burguer-menu'>
+                    { menuOpen? <MdClose/>:<MdMenu/> }
+                  </div>
+                  {pathName !== '/' &&  pathName !== '/Sign-up' &&
+                     <ul className={`text-lg text-slate-300 md:flex gap-3 md:pb-0 pb-12 absolute md:static md:z-auto z-[-1] left-0 w-full ${menuOpen && visible && 'bg-black'} ${visible?'bg-black':'bg-transparent'}} md:w-auto md:pl-0 pl-9 transition-all dura ease-in ${menuOpen? 'top-10':'top-[-490px]'}`}>
+                     <div onClick={btnToggleTheme} className={`flex items-center text-3xl text-yellow-300 cursor-pointer ${menuOpen && 'mt-5' }`}>
+                       {theme === 'dark'? <MdOutlineWbSunny/> : <MdModeNight/>}
+                     </div>
+                     <li className='md:my-2 my-1 hover:text-white hover:scale-110 transition-transform duration-75'>
+                       <Link to={'/Movies'}>Inicio</Link>
+                     </li>
+                     <li className='md:my-2 my-1 hover:text-white hover:scale-110 transition-transform duration-75'>
+                       <Link>Favoritos</Link>
+                     </li>
+                     {
+                     userName && <Avatar avatarName={userName}/>
+                     }
+                 </ul>
+                  }
              </div>
-             }
         </header>
     )
 }

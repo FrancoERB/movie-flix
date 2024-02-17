@@ -22,10 +22,10 @@ function App() {
     
     if(!getTokenFromSessionStorage && localizationPath !== '/Sign-up'){
       navigation('/');
-    }else if(getTokenFromSessionStorage && localizationPath === '/'){
+    }else if(getTokenFromSessionStorage && localizationPath === '/' || localizationPath === 'Sign-up'){
           navigation('/Movies');
     }
-  }, [token]);
+  }, [token, localizationPath]);
 
   useEffect(() => {
     if(theme === 'dark'){
