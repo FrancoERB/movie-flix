@@ -76,8 +76,6 @@ export const Detail = () => {
                                 <h2 className='text-white text-3xl'>
                                     Lo sentimos, no se ha podido cargar el trailler 😢
                                 </h2>
-                                
-                            
                         }
                         </div>
                     </div>

@@ -1,4 +1,9 @@
-export const Pagination = ({previousPage, nextPage}) => {
+export const Pagination = (props) => {
+    const {
+        previousPage, 
+        nextPage
+    } = props;
+
     return(
         <div className='flex min-w-full h-fit items-center justify-center m-5 gap-3'>
             <button 

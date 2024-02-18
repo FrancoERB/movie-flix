@@ -1,4 +1,12 @@
-export const CardView = ({title, year, image, onCardClick}) => {
+export const CardView = (props) => {
+
+    const {
+        title,
+        year, 
+        image, 
+        onCardClick,
+    } = props;
+
     return(
         <>  
             <div className=" flex flex-col max-w-64 rounded-sm shadow-lg m-1 hover:scale-105 transition-transform dark:bg-slate-950">
@@ -16,4 +24,4 @@ export const CardView = ({title, year, image, onCardClick}) => {
         </>
         
     )
-}           
+}

@@ -2,9 +2,14 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Avatar from "./avatar";
 import { MdModeNight, MdOutlineWbSunny, MdMenu, MdClose  } from "react-icons/md";
-import { ResponsiveStyles } from "../utils/responsiveStyles";
 
-const Header = ({btnToggleTheme, theme}) => {
+
+const Header = (props) => {
+    const {
+      btnToggleTheme, 
+      theme,
+    } = props;
+    
     const [prevScrollPos, setPrevScrollPos] = useState(0);
     const [visible, setVisible] = useState(true);
     const [menuOpen, setMenuOpen] = useState(false);

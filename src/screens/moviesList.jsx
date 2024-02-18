@@ -11,24 +11,30 @@ const MoviesList = () => {
     const [pageChangeNumber, setPageChangeNumber] = useState(1);
     const navigation = useNavigate();
 
-    useEffect(() => {
+    const MIN_PAGE = 1;
+    const MAX_PAGE = 40;
+
+    const getMovies = () => {
         getMoviesFromApi(pageChangeNumber).then(myMovies => {
             setMovies(myMovies.results)
-            console.log(myMovies.results);
-          }).catch(error => {
+        }).catch(error => {
             console.error('Error al obtener películas:', error);
-          });
+        });
+    }
+
+    useEffect(() => {
+       getMovies()
     },[pageChangeNumber])
 
     const handleBtnNextPage = () => {
         const increment = pageChangeNumber + 1;
-        increment >= 1 && increment <=40 && setPageChangeNumber(increment);
+        increment >= MIN_PAGE && increment <= MAX_PAGE && setPageChangeNumber(increment);
         return increment;
     }
 
     const handleBtnPreviousPage = () => {
         const decrement = pageChangeNumber - 1;
-        decrement >= 1 && setPageChangeNumber(decrement);
+        decrement >= MIN_PAGE && setPageChangeNumber(decrement);
     }
 
     const handleCardClick = (movieId) => {
