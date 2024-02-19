@@ -4,6 +4,7 @@ import MoviesList from './screens/moviesList';
 import Header from './components/header';
 import Login from './components/login';
 import SignUp from './components/sign-up';
+import { Search } from './screens/search';
 import { Detail } from './screens/detail';
 import { initializeApp } from "firebase/app";
 import {firebaseConfig} from "../firebaseConfig";
@@ -47,6 +48,7 @@ function App() {
           <Route path='/Movies' element={<MoviesList/>}/>
           <Route path='/Sign-up' element={<SignUp/>}/>
           <Route path='/Detail' element={<Detail/>}/>
+          <Route path='/Search' element={<Search/>}/>
       </Routes>
     </div>
   )

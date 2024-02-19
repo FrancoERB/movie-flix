@@ -1,35 +1,41 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Avatar from "./avatar";
-import { MdModeNight, MdOutlineWbSunny, MdMenu, MdClose  } from "react-icons/md";
-
+import { MdModeNight, MdOutlineWbSunny, MdMenu, MdClose, MdOutlineSearch    } from "react-icons/md";
 
 const Header = (props) => {
     const {
       btnToggleTheme, 
       theme,
     } = props;
-    
+
     const [prevScrollPos, setPrevScrollPos] = useState(0);
     const [visible, setVisible] = useState(true);
     const [menuOpen, setMenuOpen] = useState(false);
     const [userName, setUserName] = useState(null);
     const [pathName, setPathName] = useState(null);
+    const [searchTerm, setSearchTerms] = useState('');
+    const navigation = useNavigate();
   
     useEffect(() => {
       setPathName(window.location.pathname);
-      console.log('path:', pathName);
       getUsername();
       const handleScroll = () => {
         const currentScrollPos = window.scrollY;
         setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 25);
         setPrevScrollPos(currentScrollPos);
       };
-      
+
       window.addEventListener('scroll', handleScroll);
   
       return () => window.removeEventListener('scroll', handleScroll);
     }, [prevScrollPos, userName, pathName]);
+
+    const handleSearch = (e) => {
+      navigation(`/Search?my_search=${searchTerm}`);
+      setSearchTerms('');
+    }
+      
 
     const getUsername = () => {
       const name = sessionStorage.getItem('userName');
@@ -44,6 +50,20 @@ const Header = (props) => {
                     <span className='font-bold text-2xl cursor-pointer text-red-600 mr-1'
                     >MOVIE-FLIX
                     </span>
+                  </div>
+                  <div className='flex w-56 h-full items-center' id='input-search-container'>
+                    <input 
+                      name='inputSearch'
+                      className='text-white h-10 bg-zinc-800 rounded-xl px-5 text-center' 
+                      placeholder='Search a movie'
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerms(e.target.value)}
+                    />
+                    <button 
+                      className=' flex w-fit h-fit mx-3'
+                      onClick={() => handleSearch(searchTerm)}
+                      ><MdOutlineSearch className='size-6 text-white'/>
+                    </button>
                   </div>
                   <div onClick={() => setMenuOpen(!menuOpen)} className='text-3xl absolute right-8 top-5 cursor-pointer text-white md:hidden' id='container-burguer-menu'>
                     { menuOpen? <MdClose/>:<MdMenu/> }
