@@ -4,8 +4,10 @@ import MoviesList from './screens/moviesList';
 import Header from './components/header';
 import Login from './components/login';
 import SignUp from './components/sign-up';
+import { Footer } from './components/footer';
 import { Search } from './screens/search';
 import { Detail } from './screens/detail';
+import { Favorites } from './screens/favorites';
 import { initializeApp } from "firebase/app";
 import {firebaseConfig} from "../firebaseConfig";
 import { useEffect, useState } from 'react';
@@ -21,9 +23,9 @@ function App() {
     const getTokenFromSessionStorage = sessionStorage.getItem('token');
     setToken(getTokenFromSessionStorage);
     
-    if(!getTokenFromSessionStorage && localizationPath !== '/Sign-up'){
+    if(!getTokenFromSessionStorage && localizationPath !== '/signUp'){
       navigation('/');
-    }else if(getTokenFromSessionStorage && localizationPath === '/' || localizationPath === 'Sign-up'){
+    }else if(getTokenFromSessionStorage && localizationPath === '/' || localizationPath === 'signUp'){
           navigation('/Movies');
     }
   }, [token, localizationPath]);
@@ -46,10 +48,12 @@ function App() {
       <Routes>
           <Route path='/' element={<Login />}/>
           <Route path='/Movies' element={<MoviesList/>}/>
-          <Route path='/Sign-up' element={<SignUp/>}/>
+          <Route path='/signUp' element={<SignUp/>}/>
           <Route path='/Detail' element={<Detail/>}/>
           <Route path='/Search' element={<Search/>}/>
+          <Route path='/Favorites' element ={<Favorites themeColor={theme}/>}/>
       </Routes>
+      <Footer/>
     </div>
   )
 }

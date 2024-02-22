@@ -24,10 +24,9 @@ export default {
         },
       },
       screens: {
-        'sm': '320px', // Establecer 640px como ancho mínimo para sm
+        'sm': '340px',
         'md': '640px',
         'lg': '1024px',
-        'xl': '1280px',
       }
     },
   },
