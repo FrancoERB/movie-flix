@@ -32,13 +32,13 @@ export const Detail = () => {
     <>
       {movie ? (
         <div
-          className="flex flex-col w-full min-h-screen bg-cover bg-center mt-6"
+          className="flex flex-col w-full min-h-screen bg-cover bg-center"
           style={{
             backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path}.jpg)`,
           }}
         >
           <div
-            className=" flex md:flex-row sm:flex-col h-screen backdrop-brightness-50 md:mt-9 sm:mt-3"
+            className=" flex md:flex-row sm:flex-col h-screen backdrop-brightness-50 md:pt-10 lg:pt-10 sm:pt-3 "
             style={{}}
           >
             <div className="flex sm:w-full md:w-96 h-[450px]">

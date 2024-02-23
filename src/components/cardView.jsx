@@ -1,11 +1,17 @@
 export const CardView = (props) => {
-  const { title, year, image, onCardClick, btnFavOnClick } = props;
-
+  const { 
+    title, 
+    year, 
+    image, 
+    onCardClick, 
+    btnFavOnClick,
+   } = props;
+   
   return (
     <>
-      <div className="flex sm:flex-row md:flex-col lg:flex-col sm:w-full sm:h-40 md:h-[500px] md:w-64 lg:max-w-64 rounded-sm shadow-lg m-1 hover:scale-105 transition-transform dark:bg-slate-950">
+      <div className={`flex sm:flex-row md:flex-col lg:flex-col sm:w-full sm:h-40 md:h-[500px] md:w-64 lg:max-w-64 rounded-sm shadow-lg m-1 dark:bg-slate-950  hover:scale-105 transition-transform`}>
         <img
-          className="w-full sm:w-32 md:w-80 lg:w-full sm:h-auto md:h-96 lg:h-96  object-center rounded-t-md"
+          className="w-full sm:w-32 md:w-80 lg:w-full sm:h-auto md:h-96 lg:h-96 object-center rounded-t-md"
           src={`https://image.tmdb.org/t/p/w500/${image}.jpg`}
           onClick={onCardClick}
         />

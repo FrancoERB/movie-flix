@@ -4,6 +4,7 @@ import { useMovies } from "../context/Movies";
 import { useNavigate } from "react-router-dom";
 import { Pagination } from "../components/pagination";
 import Spinner from "../components/spinner";
+import 'animate.css';
 
 const MoviesList = () => {
   const { getMoviesFromApi, addOrRemoveFromFavs } = useMovies();
@@ -62,12 +63,14 @@ const MoviesList = () => {
 
   return (
     <>
-      {movies ? (
+      {movies ? 
         <>
-          <h1 className="text-3xl font-bold m-2 dark:text-slate-200">
-            Top Movies
+         <div className='w-screen pt-14 top-0'>
+          <h1 className="text-2xl font-bold ml-2 w-fit px-3 py-1 mt-2 rounded-2xl  bg-gradient-to-r from-[#4b79a1] to-[#283e51] text-white">
+            Top películas
           </h1>
-          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 min-h-screen min-w-full mt-10 place-items-center dark:bg-slate-950">
+         </div>
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 min-h-screen min-w-full mt-8 place-items-center dark:bg-slate-950 animate__animated animate__fadeInRight animate__fast">
             {movies.map((oneMovie) => (
               <CardView
                 key={oneMovie.id}
@@ -84,11 +87,11 @@ const MoviesList = () => {
             nextPage={handleBtnNextPage}
           />
         </>
-      ) : (
+       : 
         <div className=" flex min-h-screen min-w-full justify-center items-center">
           <Spinner />
         </div>
-      )}
+      }
     </>
   );
 };

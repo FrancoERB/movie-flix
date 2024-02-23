@@ -35,7 +35,7 @@ export const AuthProvider = ({children}) => {
             sessionStorage.setItem('userName', user.displayName);
             sessionStorage.setItem('token', JSON.stringify(userToken));
             setToken(userToken);
-            Swal.fire('¡Bienvenido!', 'success');
+            Swal.fire('¡Bienvenido!', user.displayName);
             navigation('/Movies');
             
         })
