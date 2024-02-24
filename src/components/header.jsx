@@ -67,8 +67,8 @@ const Header = (props) => {
 
         <div
           onClick={() => setMenuOpen(!menuOpen)}
-          className="text-3xl absolute right-8 top-4 cursor-pointer text-white md:hidden"
-          id="container-burguer-menu"
+          className="text-3xl absolute right-8 top-4 sm:top-[9px] cursor-pointer text-white md:hidden"
+          id="container-burger-menu"
         >
           {menuOpen ? <MdClose /> : <MdMenu />}
         </div>
