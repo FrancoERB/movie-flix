@@ -38,6 +38,9 @@ const Header = (props) => {
     navigation(`/Search?my_search=${searchTerm}`);
     setSearchTerms("");
   };
+  const handleLinkClick = () => {
+    setMenuOpen(false);
+  }
 
   const getUsername = () => {
     const name = sessionStorage.getItem("userName");
@@ -110,11 +113,11 @@ const Header = (props) => {
             >
               {theme === "dark" ? <MdOutlineWbSunny /> : <MdModeNight />}
             </div>
-            <li className="md:my-2 my-1 hover:text-white hover:scale-110 transition-transform duration-75">
-              <Link to={"/Movies"}>Inicio</Link>
+            <li className="md:my-2 my-1  md:hover:text-white md:hover:scale-110 transition-transform duration-75">
+              <Link onClick={handleLinkClick} to={"/Movies"}>Inicio</Link>
             </li>
-            <li className="md:my-2 my-1 hover:text-white hover:scale-110 transition-transform duration-75">
-              <Link to={"/Favorites"}>Favoritos</Link>
+            <li className="md:my-2 my-1 md:hover:text-white md:hover:scale-110 transition-transform duration-75">
+              <Link onClick={handleLinkClick} to={"/Favorites"}>Favoritos</Link>
             </li>
             {userName && <Avatar avatarName={userName} />}
           </ul>

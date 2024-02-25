@@ -6,7 +6,7 @@ const SignUp = () => {
 
     return(
         <div className="flex items-center justify-center min-h-screen min-w-screen bg-cover bg-custom-background">
-        <div className=" flex flex-col min-h-fit sm:w-2/3 md:w-1/2 lg:w-1/3 mt-10 bg-gradient-to-b from-pale-sky-300 to-pale-sky-100 p-12 rounded-xl shadow-md">
+        <div className=" flex flex-col min-h-fit sm:w-11/12 sm:h-fit md:w-1/2 lg:w-1/3 mt-10 bg-gradient-to-b from-pale-sky-300 to-pale-sky-100 p-12 rounded-xl shadow-md">
             <h2 className=" flex text-2xl font-bold w-full text-white mb-4">Registro</h2>
             <Formik
             initialValues={{ email: '', password: '', repeatPassword: '', displayName: '', }}

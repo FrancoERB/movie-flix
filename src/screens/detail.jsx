@@ -32,31 +32,31 @@ export const Detail = () => {
     <>
       {movie ? (
         <div
-          className="flex flex-col w-full sm:h-[100vh] h-screen bg-cover bg-center"
+          className="flex flex-col w-full sm:h-[110vh] h-screen bg-cover bg-center"
           style={{
             backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path}.jpg)`,
           }}
         >
           <div
-            className=" flex sm:flex-col md:flex-row lg:flex-row h-screen sm:h-[100vh] backdrop-brightness-50 backdrop-blur-md sm:pt-3 md:pt-10 lg:pt-10"
+            className=" flex sm:flex-col md:flex-row lg:flex-row h-screen sm:h-[110vh] backdrop-brightness-50 backdrop-blur-md sm:pt-3 md:pt-10 lg:pt-10"
           >
             <div className="flex sm:w-full md:w-96 h-[450px]">
               <img
-                className="flex justify-center w-full h-full m-2 mt-8 rounded-md"
+                className="flex justify-center sm:h-[45vh] sm:w-full md:w-full md:h-full lg:w-full lg:h-full m-2 mt-8 sm:mt-12 rounded-md"
                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}.jpg`}
                 alt=""
               />
             </div>
-            <div className="flex flex-col md: w-screen lg:w-screen h-[450px] sm:w-screen sm:pt-5 sm:h-[150vh] md:h-[450px] lg:h-[450px] mt-8 md:mx-11 rounded-md">
+            <div className="flex flex-col md:w-screen lg:w-screen sm:w-screen sm:h-[150vh] sm:mt-[10%] md:h-[450px] lg:h-[450px] md:mt-12md:mx-11 rounded-md">
               {!showTrailer ? (
                 <>
-                  <h2 className="text-3xl font-bold ml-2 mt-4 text-white">
+                  <h2 className="md:text-3xl sm:text-2xl font-bold ml-2 mt-4 text-white">
                     {movie.title} ({movie.release_date.split("-")[0]})
                   </h2>
-                  <h3 className="text-2xl font-bold ml-2 mt-4w text-white opacity-50">
+                  <h3 className="text-2xl font-bold ml-2 sm:mt-1 md:mt-4 text-white opacity-50">
                     {movie.tagline}
                   </h3>
-                  <h3 className="flex ml-2 text-2xl mt-5 text-white font-bold">
+                  <h3 className="flex ml-2 sm:text-xl md:text-2xl mt-5 text-white font-bold">
                     Vista general
                   </h3>
                   <p className="text-white text-base ml-2">{movie.overview}</p>
@@ -71,7 +71,7 @@ export const Detail = () => {
                     ))}
                   </div>
                   <button
-                    className="m-4 text-white font-bold text-2xl w-fit"
+                    className="m-4 text-white font-bold sm:text-xl md:text-2xl w-fit"
                     onClick={handleShowVideo}
                   >
                     ▶ Ver Trailler

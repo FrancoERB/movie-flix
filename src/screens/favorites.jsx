@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useMovies } from "../context/Movies";
 import { CardView } from "../components/cardView";
-import Spinner from "../components/spinner";
 import 'animate.css';
 
 export const Favorites = () => {
-   
    const {addOrRemoveFromFavs, favMovies} = useMovies();
    const [movies, setMovies] = useState([])
+   const navigation = useNavigate();
     
     useEffect(() => {
         const getMovies = JSON.parse(localStorage.getItem('favs'))
@@ -18,6 +18,10 @@ export const Favorites = () => {
         const { image, id, title } = movie;
         addOrRemoveFromFavs({ image, id, title });
     };
+
+    const handleCardClick = (movieId) => {
+        navigation(`/Detail?movie_id=${movieId}`);
+      };
 
     return(
         <>
@@ -37,6 +41,7 @@ export const Favorites = () => {
                 key={movie.id}
                 title={movie.title}
                 image={movie.image}
+                onCardClick={() => handleCardClick(movie.id)}
                 btnFavOnClick={(e) => handleRemoveFromFavs(e, movie)}
                 />
                 ))}
