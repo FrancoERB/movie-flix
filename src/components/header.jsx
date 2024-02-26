@@ -68,14 +68,16 @@ const Header = (props) => {
           </span>
         </div>
 
-        <div
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="text-3xl absolute right-8 top-4 sm:top-[9px] cursor-pointer text-white md:hidden"
-          id="container-burger-menu"
-        >
-          {menuOpen ? <MdClose /> : <MdMenu />}
-        </div>
-        {pathName !== "/" && pathName !== "/Sign-up" && (
+        {pathName !== "/" && pathName !== "/Sign-up" && 
+        <>
+          <div
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="text-3xl absolute right-8 top-4 sm:top-[9px] cursor-pointer text-white md:hidden"
+            id="container-burger-menu"
+          >
+            {menuOpen ? <MdClose /> : <MdMenu />}
+          </div>
+        
           <ul
             className={`text-lg text-slate-300 md:flex gap-3 md:pb-0 pb-12 absolute md:static md:z-auto z-[-1] left-0 w-full ${
               menuOpen && visible && "bg-black"
@@ -121,7 +123,8 @@ const Header = (props) => {
             </li>
             {userName && <Avatar avatarName={userName} />}
           </ul>
-        )}
+        </>
+        }
       </div>
     </header>
   );

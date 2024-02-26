@@ -47,10 +47,10 @@ export const Detail = () => {
                 alt=""
               />
             </div>
-            <div className="flex flex-col md:w-screen lg:w-screen sm:w-screen sm:h-[150vh] sm:mt-[10%] md:h-[450px] lg:h-[450px] md:mt-12md:mx-11 rounded-md">
+            <div className="flex flex-col md:w-screen lg:w-screen sm:ml-0 md:ml-4 lg:ml-4 sm:w-screen sm:h-[150vh] sm:mt-[10%] md:h-[450px] lg:h-[450px] md:mt-12 md:mx-11 rounded-md">
               {!showTrailer ? (
                 <>
-                  <h2 className="md:text-3xl sm:text-2xl font-bold ml-2 mt-4 text-white">
+                  <h2 className="md:text-3xl sm:text-2xl font-bold ml-2 mt-1 text-white">
                     {movie.title} ({movie.release_date.split("-")[0]})
                   </h2>
                   <h3 className="text-2xl font-bold ml-2 sm:mt-1 md:mt-4 text-white opacity-50">
@@ -59,7 +59,7 @@ export const Detail = () => {
                   <h3 className="flex ml-2 sm:text-xl md:text-2xl mt-5 text-white font-bold">
                     Vista general
                   </h3>
-                  <p className="text-white text-base ml-2">{movie.overview}</p>
+                  <p className="w-full sm:h-24 md:h-fit overflow-scroll md:overflow-visible lg:overflow-visible text-white text-base ml-2">{movie.overview}</p>
                   <div className="flex flex-wrap">
                     {movie.genres.map((genre) => (
                       <div
@@ -71,7 +71,7 @@ export const Detail = () => {
                     ))}
                   </div>
                   <button
-                    className="m-4 text-white font-bold sm:text-xl md:text-2xl w-fit"
+                    className="mt-2 text-white font-bold sm:text-xl md:text-2xl w-fit"
                     onClick={handleShowVideo}
                   >
                     ▶ Ver Trailler
@@ -82,7 +82,7 @@ export const Detail = () => {
                   <YouTubePlayer videoId={videoKey} />
                   <button
                     onClick={handleShowVideo}
-                    className="font-bold text-2xl text-white z-10 absolute  sm:left-0 sm:top-50 md:bottom-5 md:right-0 md:left-0 lg:bottom-5 lg:left-0 lg:right-0 animate-pulse    m-4 "
+                    className="font-bold text-2xl text-white z-10 absolute  sm:left-0 sm:top-50 bg-gradient-to-r from-black to-stone-800 rounded-lg md:bottom-5 md:right-0 md:left-0 lg:bottom-5 lg:left-0 lg:right-0 animate-pulse    m-4 "
                   >
                     X Cerrar Trailer
                   </button>

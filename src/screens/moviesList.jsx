@@ -44,12 +44,19 @@ const MoviesList = () => {
     increment >= MIN_PAGE &&
       increment <= MAX_PAGE &&
       setPageChangeNumber(increment);
-    return increment;
+      window.scrollTo({
+        top: 0,
+        behavior:'smooth'
+      })
   };
 
   const handleBtnPreviousPage = () => {
     const decrement = pageChangeNumber - 1;
     decrement >= MIN_PAGE && setPageChangeNumber(decrement);
+    window.scrollTo({
+      top: 0,
+      behavior:'smooth'
+    })
   };
 
   const handleCardClick = (movieId) => {

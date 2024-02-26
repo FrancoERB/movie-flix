@@ -35,7 +35,7 @@ export const Favorites = () => {
         <h2 className='flex w-full h-screen items-center justify-center text-4xl text-zinc-500 font-semibold '>No tienes peliculas agregadas :(</h2>
         :
         <>
-        <div className=' grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 w-full mt-5 min-h-screen place-items-center dark:bg-slate-950 animate__animated animate__fadeIn animate__fast'>
+        <div className=' grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 sm:gap-1 md:gap-4 lg:gap-4 w-full mt-1 min-h-screen place-items-center dark:bg-slate-950 animate__animated animate__fadeIn animate__fast'>
         {movies.map((movie)=>(
                 <CardView
                 key={movie.id}
