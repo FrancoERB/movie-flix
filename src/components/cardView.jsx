@@ -16,11 +16,10 @@ export const CardView = (props) => {
           onClick={onCardClick}
         />
        
-        <div className="flex flex-col h-auto w-full sm:mt-5 sm:ml-3 md:mx-0 dark:bg-zinc-800 rounded-b-md">
+        <div className="flex flex-col justify-between h-auto w-full sm:mt-5 sm:ml-3 md:mx-0 dark:bg-zinc-800 rounded-b-md">
           <h2 className="mb-4 font-bold sm:text-base md:text-base lg:text-lg p-1 sm:text-wrap md:text-nowrap lg:text-nowrap overflow-hidden overflow-ellipsis max-w-[80%] whitespace-nowrap dark:text-slate-300">
             {title}
           </h2>
-        </div>
           <div className='flex w-full h-fit justify-between'>
             <p className="text-gray-700 text-lg font-semibold p-1">
               {year}
@@ -32,6 +31,7 @@ export const CardView = (props) => {
               🤍
             </button>
           </div>
+        </div>
       </div>
     </>
   );
