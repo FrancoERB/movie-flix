@@ -31,13 +31,12 @@ export const Search = () => {
         {movies && 
             <>
             <h1 className='text-3xl font-bold mt-[75px] ml-1 dark:text-slate-200'>Search results of {search}:</h1>
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 h-fit min-w-full mt-6 place-items-center dark:bg-slate-950'>
+            <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 h-fit min-w-full mt-6 place-items-center dark:bg-slate-950'>
                 {movies.map(oneMovie =>
                  <CardView
                     key={oneMovie.id}
                     title={oneMovie.title}
                     image={oneMovie.poster_path}
-                    year={oneMovie.release_date.split('-')[0]}
                     onCardClick={() => handleCardClick(oneMovie.id)}
                 />)}
             </div>

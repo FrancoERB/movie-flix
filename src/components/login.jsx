@@ -31,7 +31,6 @@ const Login = () => {
                 type="email"
                 name="email"
                 onChange={handleChange}
-                S
                 onBlur={handleBlur}
                 value={values.email}
               />
