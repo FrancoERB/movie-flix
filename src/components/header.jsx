@@ -85,7 +85,7 @@ const Header = (props) => {
           <>
             <div
               onClick={() => setMenuOpen(!menuOpen)}
-              className="text-3xl absolute right-8 top-4 sm:top-[9px] cursor-pointer text-white md:hidden"
+              className="text-3xl absolute right-8 top-4 sm:top-[9px] cursor-pointer text-zinc-400 md:hidden"
               id="container-burger-menu"
             >
               {menuOpen ? <MdClose /> : <MdMenu />}
@@ -93,9 +93,9 @@ const Header = (props) => {
 
             <ul
               className={`text-lg text-slate-300 md:flex gap-3 md:pb-0 pb-12 absolute md:static md:z-auto z-[-1] left-0 w-full ${
-                menuOpen && visible && "bg-black"
+                menuOpen && visible && "bg-transparent backdrop-blur-2xl"
               } ${
-                visible ? "bg-black" : "bg-transparent"
+                visible ? "bg-zinc-800" : "bg-transparent"
               }} md:w-auto md:pl-0 pl-9 transition-all dura ease-in ${
                 menuOpen ? "top-10" : "top-[-490px]"
               }`}
@@ -130,12 +130,12 @@ const Header = (props) => {
               >
                 {theme === "dark" ? <MdOutlineWbSunny /> : <MdModeNight />}
               </div>
-              <li className={`md:my-2 my-1 ${theme === 'dark' ? 'text-slate-300' : 'text-zinc-400'} md:hover:text-red-500 md:hover:scale-110 transition-transform duration-75`}>
+              <li className={`md:my-2 my-1 sm:text-zinc-800 md:text-zinc-400 md:hover:text-red-500 md:hover:scale-110 transition-transform duration-75`}>
                 <Link onClick={handleLinkClick} to={"/Movies"}>
                   Inicio
                 </Link>
               </li>
-              <li className={`md:my-2 my-1 ${theme === 'dark' ? 'text-slate-300' : 'text-zinc-400'} md:hover:text-red-500 md:hover:scale-110 transition-transform duration-75`}>
+              <li className={`md:my-2 my-1 sm:text-zinc-800 md:text-zinc-400 md:hover:text-red-500 md:hover:scale-110 transition-transform duration-75`}>
                 <Link onClick={handleLinkClick} to={"/Favorites"}>
                   Favoritos
                 </Link>
