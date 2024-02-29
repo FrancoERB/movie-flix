@@ -73,11 +73,11 @@ const MoviesList = () => {
       {movies ? 
         <>
          <div className='w-screen pt-14 top-0'>
-          <h1 className="text-xl font-bold ml-2 w-fit px-3 mt-2 rounded-2xl  bg-gradient-to-r from-[#4b79a1] to-[#283e51] text-white">
+          <h1 className="text-xl font-bold ml-2 w-fit px-3 sm:mt-0 md:mt-2 rounded-2xl  bg-gradient-to-r from-[#4b79a1] to-[#283e51] text-white">
             Top películas
           </h1>
          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 min-h-screen min-w-full mt-1 place-items-center dark:bg-slate-950 animate__animated animate__fadeInRight animate__fast">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 min-h-screen min-w-full mt-2 md:mx-2 place-items-center dark:bg-slate-950 animate__animated animate__fadeInRight animate__fast">
             {movies.map((oneMovie) => (
               <CardView
                 key={oneMovie.id}

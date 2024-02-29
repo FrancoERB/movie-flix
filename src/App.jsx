@@ -43,7 +43,7 @@ function App() {
   }
 
   return (
-    <div className='w-full h-full dark:bg-slate-950'>
+    <div className='w-full h-full dark:bg-slate-950 overflow-hidden'>
       <Header btnToggleTheme={handleChangeTheme} theme={theme}/>
       <Routes>
           <Route path='/' element={<Login />}/>
