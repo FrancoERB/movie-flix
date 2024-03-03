@@ -90,26 +90,26 @@ export const MoviesProvider = ({ children }) => {
   };
 
   //function to add or remove a move from local storage//
-  const addOrRemoveFromFavs = ({ image, title, overview, id }) => {
+  const addOrRemoveFromFavs = ({ image, title, overview, id }, userId) => {
     const cardInfo = {
       image,
       title,
       overview,
       id,
     };
-    const favoritesMovies = JSON.parse(localStorage.getItem("favs"));
+    const favoritesMovies = JSON.parse(localStorage.getItem(`${userId}`));
     const isRepeatedMovie = favoritesMovies.some(
       (movie) => movie.id === cardInfo.id
     );
     if (!isRepeatedMovie) {
       localStorage.setItem(
-        "favs",
+        `${userId}`,
         JSON.stringify([...favoritesMovies, cardInfo])
       );
       Swal.fire({
         position: "center",
         icon: "success",
-        title: "Pelicula agregada con éxito",
+        title: "Pelicula agregada a favoritos",
         showConfirmButton: false,
         timer: 1000,
       });
@@ -117,11 +117,11 @@ export const MoviesProvider = ({ children }) => {
       const updatedMovies = favoritesMovies.filter(
         (movie) => movie.id !== cardInfo.id
       );
-      localStorage.setItem("favs", JSON.stringify(updatedMovies));
+      localStorage.setItem(`${userId}`, JSON.stringify(updatedMovies));
       Swal.fire({
         position: "center",
         icon: "error",
-        title: "Pelicula Eliminada con éxito",
+        title: "Pelicula eliminada de favoritos",
         showConfirmButton: false,
         timer: 1000,
       });

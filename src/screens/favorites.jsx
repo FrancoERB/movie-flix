@@ -10,11 +10,12 @@ export const Favorites = () => {
    const navigation = useNavigate();
     
     useEffect(() => {
-        const getMovies = JSON.parse(localStorage.getItem('favs'))
+        const userId = sessionStorage.getItem('userId');
+        const getMovies = JSON.parse(localStorage.getItem(`${userId}`))
         getMovies && setMovies(getMovies);
     },[favMovies])
   
-    const handleRemoveFromFavs = (e, movie) => {
+    const handleRemoveFromFavs = (movie) => {
         const { image, id, title } = movie;
         addOrRemoveFromFavs({ image, id, title });
     };

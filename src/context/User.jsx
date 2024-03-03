@@ -49,7 +49,9 @@ export const AuthProvider = ({ children }) => {
         const userToken = user.stsTokenManager.accessToken;
         sessionStorage.setItem("userName", user.displayName);
         sessionStorage.setItem("token", JSON.stringify(userToken));
+        sessionStorage.setItem('userId', user.uid)
         setToken(userToken);
+        console.log('Datos de usuario:', user);
         Swal.fire("¡Bienvenido!", user.displayName);
         navigation("/Movies");
       })
@@ -82,7 +84,7 @@ export const AuthProvider = ({ children }) => {
         });
         sessionStorage.setItem("userName", user.displayName);
         Swal.fire(
-          "Creación de usuario exitosa, Bienvenido");
+          "Creación de usuario exitosa, inicie sesion con sus datos");
         navigation("/");
       })
       .catch((error) => {

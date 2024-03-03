@@ -27,8 +27,9 @@ const Header = (props) => {
     getUsername();
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
-      setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 50);
+      setVisible(currentScrollPos < 100);
       setPrevScrollPos(currentScrollPos);
+      setMenuOpen(false);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -65,7 +66,7 @@ const Header = (props) => {
       className={`flex items-center w-full fixed top-0 left-0 z-10 ${
         visible
           ? "bg-transparent animate__animated animate__headShake"
-          : "bg-transparent backdrop-blur transition duration-300"
+          : "bg-transparent backdrop-blur transition-opacity duration-300"
       }`}
     >
       <div
@@ -81,22 +82,18 @@ const Header = (props) => {
           </span>
         </div>
 
-        {pathName !== "/" && pathName !== "/Sign-up" && (
+        {pathName !== "/" && pathName !== "/signUp" && (
           <>
             <div
               onClick={() => setMenuOpen(!menuOpen)}
-              className="text-3xl absolute right-8 top-4 sm:top-[9px] cursor-pointer text-zinc-400 md:hidden"
+              className="text-3xl absolute right-8 top-4 sm:top-[9px] sm:right-2 cursor-pointer text-zinc-400 md:hidden"
               id="container-burger-menu"
             >
               {menuOpen ? <MdClose /> : <MdMenu />}
             </div>
 
             <ul
-              className={`text-lg text-slate-300 md:flex gap-3 md:pb-0 pb-12 absolute md:static md:z-auto z-[-1] left-0 w-full ${
-                menuOpen && visible && "bg-transparent backdrop-blur-2xl"
-              } ${
-                visible ? "bg-zinc-800" : "bg-transparent"
-              }} md:w-auto md:pl-0 pl-9 transition-all dura ease-in ${
+              className={`text-lg text-slate-300 md:flex gap-3 md:pb-0 pb-12 bg-transparent backdrop-blur-xl absolute md:static md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all ease-in ${
                 menuOpen ? "top-10" : "top-[-490px]"
               }`}
             >

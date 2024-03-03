@@ -9,6 +9,7 @@ import 'animate.css';
 const MoviesList = () => {
   const { getMoviesFromApi, addOrRemoveFromFavs } = useMovies();
   const [movies, setMovies] = useState([]);
+  const [userId, setUserId] = useState(null);
   const [favMovies, setFavMovies] = useState([]);
   const [pageChangeNumber, setPageChangeNumber] = useState(1);
   const navigation = useNavigate();
@@ -31,13 +32,15 @@ const MoviesList = () => {
   }, [pageChangeNumber]);
 
   useEffect(() => {
-    const favoritesMovies = JSON.parse(localStorage.getItem("favs"));
+    const idUser = sessionStorage.getItem('userId');
+    idUser && setUserId(idUser);
+    const favoritesMovies = JSON.parse(localStorage.getItem(`${userId}`));
     if (!favoritesMovies) {
-      localStorage.setItem("favs", JSON.stringify([]));
+      localStorage.setItem(`${userId}`, JSON.stringify([]));
     } else {
       setFavMovies(favoritesMovies);
     }
-  }, []);
+  }, [userId]);
 
   const handleBtnNextPage = () => {
     const increment = pageChangeNumber + 1;
@@ -65,7 +68,7 @@ const MoviesList = () => {
 
   const onAddFav = (e, movie) => {
     const { image, title, overview, id } = movie;
-    addOrRemoveFromFavs({ image: movie.poster_path, title, overview, id });
+    addOrRemoveFromFavs({ image: movie.poster_path, title, overview, id }, userId);
   };
 
   return (
