@@ -25,7 +25,7 @@ export const Search = () => {
                 })
             })
         }
-    },[])
+    },[search])
     
     const handleCardClick = (movieId) => {
         navigation(`/Detail?movie_id=${movieId}`);
