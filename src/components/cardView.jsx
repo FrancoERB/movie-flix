@@ -1,3 +1,4 @@
+import './style.css';
 export const CardView = (props) => {
   const { 
     title, 
@@ -9,9 +10,10 @@ export const CardView = (props) => {
    
   return (
     <>
-      <div className={`flex sm:flex-row md:flex-col lg:flex-col sm:w-full sm:h-40 md:h-[500px] md:w-64 lg:max-w-64 shadow-lg sm:mr-3 md:mx-2 dark:bg-slate-950 md:hover:-scale-95 transition-transform lg:hover:scale-95`}>
+      <div className={`flex sm:flex-row md:flex-col lg:flex-col sm:w-full sm:h-40 md:h-[500px] md:w-64 lg:max-w-64 shadow-lg sm:mx-5 md:mx-2 dark:bg-slate-950 md:hover:-scale-95 transition-transform lg:hover:scale-95`}>
         <img
           className="w-full sm:w-1/2 sm:ml-2 md:m-0 md:w-80 lg:m-0 lg:w-full sm:h-full md:h-96 lg:h-96 object-center sm:rounded-s-md md:rounded-t-md md:rounded-b-none"
+          id='imgCardView'
           src={`https://image.tmdb.org/t/p/w500/${image}.jpg`}
           onClick={onCardClick}
         />
