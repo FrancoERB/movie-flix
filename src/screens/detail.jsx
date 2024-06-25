@@ -42,19 +42,19 @@ export const Detail = () => {
           >
             <div className="flex sm:w-full md:w-96 h-[450px]">
               <img
-                className="flex justify-center sm:h-[45vh] sm:w-full md:w-full md:h-full lg:w-full lg:h-full m-2 mt-8 sm:mt-12 rounded-md"
+                className="relative z-0 justify-center sm:brightness-50 sm:h-[40vh] sm:w-[100%] md:w-full md:h-[80%] lg:w-full lg:h-full m-2 mt-8 sm:mt-12 rounded-md"
                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}.jpg`}
                 alt=""
               />
             </div>
             <div className="flex flex-col md:w-screen lg:w-screen sm:ml-0 md:ml-4 lg:ml-4 sm:w-screen sm:h-[150vh] sm:mt-[10%] md:h-[450px] lg:h-[450px] md:mt-12 md:mx-11 rounded-md">
-              {!showTrailer ? (
+              {!showTrailer? (
                 <>
-                  <h2 className="md:text-3xl sm:text-2xl font-bold ml-2 mt-1 text-white">
-                    {movie.title} ({movie.release_date.split("-")[0]})
+                  <h2 className=" md:text-3xl sm:text-2xl font-bold ml-2 text-white">
+                      {movie.title} ({movie.release_date.split("-")[0]})
                   </h2>
-                  <h3 className="text-2xl font-bold ml-2 sm:mt-1 md:mt-4 text-white opacity-50">
-                    {movie.tagline}
+                  <h3 className="text-2xl sm:text-xl font-bold ml-2 sm:mt-1 md:mt-4 text-white opacity-70">
+                      {movie.tagline}
                   </h3>
                   <h3 className="flex ml-2 sm:text-xl md:text-2xl mt-5 text-white font-bold">
                     Vista general
@@ -71,7 +71,7 @@ export const Detail = () => {
                     ))}
                   </div>
                   <button
-                    className="mt-2 text-white font-bold sm:text-xl md:text-2xl w-fit"
+                    className="sm:absolute sm:top-[43%] sm:ml-2 md:top-[53%] md:mt-2 lg:top-[52%] lg:mt-2 text-white font-bold sm:text-xl md:text-2xl w-fit"
                     onClick={handleShowVideo}
                   >
                     ▶ Ver Trailler
@@ -82,7 +82,7 @@ export const Detail = () => {
                   <YouTubePlayer videoId={videoKey} />
                   <button
                     onClick={handleShowVideo}
-                    className="font-bold text-2xl text-white z-10 absolute  sm:left-0 sm:top-50 bg-gradient-to-r from-black to-stone-800 rounded-lg md:bottom-5 md:right-0 md:left-0 lg:bottom-5 lg:left-0 lg:right-0 animate-pulse    m-4 "
+                    className="font-bold text-2xl text-white z-10 absolute  sm:left-0 sm:top-[10%] bg-gradient-to-r from-black to-stone-800 rounded-lg md:bottom-5 md:right-0 md:left-0 lg:bottom-5 lg:left-0 lg:right-0 animate-pulse    m-4 "
                   >
                     X Cerrar Trailer
                   </button>

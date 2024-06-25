@@ -80,7 +80,7 @@ const MoviesList = () => {
             Top películas
           </h1>
          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 min-h-screen min-w-full mt-2 md:mx-2 place-items-center dark:bg-slate-950 animate__animated animate__fadeInRight animate__fast">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-5 lg:grid-cols-8 xl:grid-cols-8 min-h-screen min-w-full mt-2 md:mx-2 place-items-center dark:bg-slate-950 md:animate__animated animate__fadeInRight animate__fast">
             {movies.map((oneMovie) => (
               <CardView
                 key={oneMovie.id}
