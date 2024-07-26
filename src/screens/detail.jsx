@@ -71,7 +71,7 @@ export const Detail = () => {
                     ))}
                   </div>
                   <button
-                    className="sm:absolute sm:top-[43%] sm:ml-2 md:top-[53%] md:mt-2 lg:top-[52%] lg:mt-2 text-white font-bold sm:text-xl md:text-2xl w-fit"
+                    className="sm:absolute sm:top-[43%] sm:ml-2 md:top-[53%] md:mt-2 lg:top-[52%] lg:mt-2 text-white font-bold sm:text-xl md:text-2x w-fit"
                     onClick={handleShowVideo}
                   >
                     ▶ Ver Trailler
@@ -82,7 +82,7 @@ export const Detail = () => {
                   <YouTubePlayer videoId={videoKey} />
                   <button
                     onClick={handleShowVideo}
-                    className="font-bold text-2xl text-white z-10 absolute  sm:left-0 sm:top-[10%] bg-gradient-to-r from-black to-stone-800 rounded-lg md:bottom-5 md:right-0 md:left-0 lg:bottom-5 lg:left-0 lg:right-0 animate-pulse    m-4 "
+                    className="font-bold text-base md:w-40 md:h-8 lg:w-40 lg:h-8 text-white z-40 absolute sm:left-0 sm:top-[10%] bg-gradient-to-r from-black to-stone-800 rounded-lg md:bottom-5 md:right-0 md:left-0 lg:top-20 lg:left-[10c0px] lg:right-0 animate-pulse m-4 "
                   >
                     X Cerrar Trailer
                   </button>
