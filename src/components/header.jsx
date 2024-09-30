@@ -63,7 +63,7 @@ const Header = (props) => {
 
   return (
     <header
-      className={`flex items-center w-full fixed top-0 left-0 z-10 ${
+      className={`flex items-center w-full fixed top-0 left-0 z-20 ${
         visible
           ? "bg-transparent animate__animated animate__headShake"
           : "bg-transparent backdrop-blur transition-opacity duration-300"

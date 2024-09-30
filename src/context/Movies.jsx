@@ -8,6 +8,7 @@ export const MoviesContext = createContext();
 export const MoviesProvider = ({ children }) => {
   const apiKey = "6aa686f0c4b6edd137850466238559bd";
   const [favMovies, setFavMovies] = useState([]);
+  
   //Function for get all movies from api//
   const getMoviesFromApi = (pageNumber) => {
     try {
