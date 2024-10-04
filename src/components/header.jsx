@@ -63,14 +63,14 @@ const Header = (props) => {
 
   return (
     <header
-      className={`flex items-center w-full fixed top-0 left-0 z-20 ${
+      className={`flex items-center bg-transparent bg-gradient-to-b from-black to-transparent/50 w-full h-[7vh] fixed top-0 left-0 z-20 ${
         visible
           ? "bg-transparent animate__animated animate__headShake"
           : "bg-transparent backdrop-blur transition-opacity duration-300"
       }`}
     >
       <div
-        className="md:flex items-cente justify-between py-2 sm:px-2 md:px-2 px-7 w-full"
+        className="md:flex items-center justify-between py-2 sm:px-2 md:px-2 px-7 w-full"
         id="container-main"
       >
         <div
@@ -94,21 +94,21 @@ const Header = (props) => {
 
             <ul
               className={`text-lg md:flex gap-3 md:pb-0 pb-12 ${
-                menuOpen ? (theme === 'light' ? 'bg-white' : 'bg-slate-950') : 'bg-transparent'
-              } backdrop-blur-xl absolute md:static md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all ease-in ${
-                menuOpen ? "top-10" : "top-[-490px]"
+                menuOpen ? (theme === 'light' ? 'bg-white' : 'bg-black') : 'bg-transparent'
+              } absolute md:static md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 transition-all ease-in ${
+                menuOpen ? "top-[7vh]" : "top-[-490px]"
               }`}
             >
               <div
-                className={`flex w-56 ${
-                  menuOpen && "mt-5 "
+                className={`flex sm:w-full md:w-[12vw] lg:w-[12vw] justify-center ${
+                  menuOpen && "mt-5 my-2"
                 } items-center mr-20`}
                 id="input-search-container"
               >
                 <input
                   name="inputSearch"
                   className={`text-white placeholder:text-zinc-800 h-10 ${
-                    menuOpen && "w-[400px]"
+                    menuOpen && "w-[70vw]"
                   } bg-zinc-400 rounded-xl px-5 text-center`}
                   placeholder="Busca una película"
                   value={searchTerm}
@@ -120,21 +120,19 @@ const Header = (props) => {
                 >
                   <MdOutlineSearch className={`text-3xl ${theme === 'dark' ? 'text-slate-300' : 'text-zinc-400'}`}/>
                 </button>
+                <div
+                  onClick={btnToggleTheme}
+                  className={`flex sm:justify-center text-3xl text-yellow-300 cursor-pointer`}
+                >
+                  {theme === "dark" ? <MdOutlineWbSunny /> : <MdModeNight />}
+                </div>
               </div>
-              <div
-                onClick={btnToggleTheme}
-                className={`flex items-center text-3xl text-yellow-300 cursor-pointer ${
-                  menuOpen && "mt-5"
-                }`}
-              >
-                {theme === "dark" ? <MdOutlineWbSunny /> : <MdModeNight />}
-              </div>
-              <li className={`md:my-2 my-1 ${theme === ' light'? 'sm:text-black' : 'sm:text-zinc-700'} md:text-zinc-400 lg:text-zinc-400 md:hover:text-red-500 md:hover:scale-110 transition-transform duration-75`}>
+              <li className={`flex justify-start sm:mx-5 sm:text-xl md:my-2 md:mx-2 md:w-fit lg:w-fit lg:mx-2 my-1 ${theme === 'light'? 'sm:text-black' : 'sm:text-white'} md:text-zinc-400 lg:text-zinc-400 md:hover:text-red-500 md:hover:scale-110 transition-transform duration-75`}>
                 <Link onClick={handleLinkClick} to={"/Movies"}>
                   Inicio
                 </Link>
               </li>
-              <li className={`md:my-2 my-1 ${theme === ' light'? 'sm:text-black' : 'sm:text-zinc-700'} md:text-zinc-400 lg:text-zinc-400 md:hover:text-red-500 md:hover:scale-110 transition-transform duration-75`}>
+              <li className={`flex justify-start sm:mx-5 sm:text-xl md:my-2 my-1 ${theme === 'light'? 'sm:text-black' : 'sm:text-white'} md:text-zinc-400 lg:text-zinc-400 md:hover:text-red-500 md:hover:scale-110 transition-transform duration-75`}>
                 <Link onClick={handleLinkClick} to={"/Favorites"}>
                   Favoritos
                 </Link>

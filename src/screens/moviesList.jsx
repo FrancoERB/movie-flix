@@ -76,7 +76,7 @@ const MoviesList = () => {
       {movies ? 
         <>
          <div className='w-screen pt-14 top-0'>
-          <h1 className="flex justify-start items-start mx-2 py-[0px] px-[6px] text-sm font-bold w-fit h-full rounded-2xl  bg-gradient-to-r from-[#4b79a1] to-[#283e51] text-white">
+          <h1 className="flex justify-start items-start mt-2 mx-2 py-[0px] px-[6px] text-sm font-bold w-fit h-full rounded-2xl  bg-gradient-to-r from-[#4b79a1] to-[#283e51] text-white">
             TOP PELICULAS
           </h1>
          </div>

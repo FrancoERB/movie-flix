@@ -2,7 +2,7 @@
 const YouTubePlayer = ({videoId}) => {
   return(
     <iframe 
-      className={`sm: absolute sm:top-[5%] flex sm:w-full h-96 md:w-full md:h-full lg:w-[75%] lg:h-[450px] lg:mt-[57px] transition-colors duration-500`}
+      className={`flex sm:w-full sm:h-[100vh] sm:m-[2vh] md:w-full md:h-full lg:w-[60vw] lg:h-[70vh] transition-colors duration-500`}
       // width="1280" 
       // height="720" 
       src={`https://www.youtube.com/embed/${videoId}`} 

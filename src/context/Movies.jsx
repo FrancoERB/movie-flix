@@ -17,6 +17,8 @@ export const MoviesProvider = ({ children }) => {
           `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&include_adult=true&include_video=true&language=es-ES&page=${pageNumber}&sort_by=popularity.desc`
         )
         .then((res) => {
+          console.log('Api res:', res);
+          
           return res.data;
         });
     } catch (error) {
