@@ -31,34 +31,41 @@ export const Detail = () => {
    
   }, [videoKey]);
 
+  const handleShowTrailer = () => {
+    window.scrollBy({
+      top: 500,
+      behavior: 'smooth'
+    });
+  }
+
   return (
     <>
       {movie ? (
         <>
-        <div className="flex flex-col w-full sm:h-[120vh] md:h-1/2 lg:h-full bg-cover bg-center"
+        <div className="flex flex-col sm:mt-12 md:my-14 lg:my-14 w-full sm:max-h-fit md:h-1/2 lg:h-full bg-cover bg-center"
           style={{
             backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path}.jpg)`, 
           }}
         >
-          <div className='flex flex-col h-[100%] mt-[7vh] bg-transparent backdrop-brightness-50 bg-gradient-to-b from-transparent to-black'>
-            <div className='flex sm:flex-col md:flex-row lg:flex-row sm:justify-center sm:items-center md:justify-start md:items-start lg:justify-start lg:items-start gap-4'>
+          <div className='flex flex-col h-[100%] bg-transparent backdrop-brightness-50 bg-gradient-to-b from-transparent to-black'>
+            <div className='flex sm:flex-col pt-3 md:flex-row lg:flex-row sm:justify-center sm:items-center md:justify-start md:items-start lg:justify-start lg:items-start gap-4'>
               <img
-                    className="flex sm:h-[40vh] sm:w-[90vw] md:w-[180px] md:h-[150px] lg:w-[20vw] lg:h-[60vh] mx-2 rounded-md"
+                    className="flex sm:h-[55vh] sm:w-[95vw] md:w-[180px] md:h-[150px] lg:w-[20vw] lg:h-[60vh] mx-2 rounded-md"
                     src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}.jpg`}
                     alt=""
               />
-              <div className="flex flex-col sm:gap-4 gap-1">
+              <div className="flex flex-col sm:gap-2">
                 <h2 className="md:text-3xl sm:ml-2 sm:text-2xl font-bold text-white">
                       {movie.title} ({movie.release_date.split("-")[0]})
                 </h2>
                 <h3 className="text-2xl sm:text-xl md:text-base font-bold ml-2 sm:mt-1 text-white opacity-70">
                       {movie.tagline}
                 </h3>
-                <div className='flex'>
+                <div className='flex ml-2 gap-1'>
                 {movie.genres.map((genre) => (
                   <div
                       key={genre.id}
-                      className="flex mx-1 w-fit p-1 rounded-full font-extrabold text-sm bg-white"
+                      className="flex w-fit p-1 rounded-full font-extrabold text-sm bg-white"
                   >
                       {genre.name}
                   </div>   
@@ -69,7 +76,7 @@ export const Detail = () => {
                     disabled = {videoKey ?  false : true}
                     id='trailerButton'
                     className={`sm:ml-2 md:mt-2 lg:ml-2 lg:mt-4 text-white font-bold sm:text-xl md:text-2x w-fit disabled:opacity-50`}
-                    // onClick={handleShowTrailer}
+                    onClick={handleShowTrailer}
                  >
                     {videoKey? '▷ Reproducir Tráiler' : 'Tráiler no disponible' }
                  </button>
@@ -83,10 +90,10 @@ export const Detail = () => {
                 </div>
               </div>
             </div>
-            <h3 className='flex w-full sm:my-2 mt-[4vh] h-[5vh] justify-center text-white text-3xl bg-transparent backdrop-blur-sm'>
+            <h3 className='flex w-full sm:my-5 sm:text-xl mt-[4vh] h-[5vh] justify-center text-white text-3xl bg-transparent backdrop-blur-sm'>
               Tráiler y más
             </h3>
-            <div className="flex justify-center items-center sm:flex-col md:flex-row lg:flex-row sm:w-screen sm:h-[20vh] md:w-screen lg:w-[100vw] lg:h-[80vh]">
+            <div className="flex justify-center items-center sm:flex-col md:flex-row lg:flex-row sm:w-screen sm:h-[30vh] md:w-screen lg:w-[100vw] lg:h-[80vh]">
               {videoKey ? 
                   (
                     <>

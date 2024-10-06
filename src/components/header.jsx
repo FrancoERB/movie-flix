@@ -13,7 +13,7 @@ import Swal from "sweetalert2";
 
 const Header = (props) => {
   const { btnToggleTheme, theme } = props;
-
+  
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -63,7 +63,8 @@ const Header = (props) => {
 
   return (
     <header
-      className={`flex items-center bg-transparent bg-gradient-to-b from-black to-transparent/50 w-full h-[7vh] fixed top-0 left-0 z-20 ${
+      className={`flex items-center ${theme === 'light' ? 'bg-transparent' :  'bg-transparent bg-gradient-to-b from-black to-transparent/50'
+      } w-full h-[7vh] fixed top-0 left-0 z-20 ${
         visible
           ? "bg-transparent animate__animated animate__headShake"
           : "bg-transparent backdrop-blur transition-opacity duration-300"
@@ -101,7 +102,7 @@ const Header = (props) => {
             >
               <div
                 className={`flex sm:w-full md:w-[12vw] lg:w-[12vw] justify-center ${
-                  menuOpen && "mt-5 my-2"
+                  menuOpen && "mt-5"
                 } items-center mr-20`}
                 id="input-search-container"
               >

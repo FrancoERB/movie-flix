@@ -4,7 +4,7 @@ import { RiInstagramLine, RiGithubFill, RiLinkedinBoxFill  } from "react-icons/r
 
 export const Footer = () => {
     return(
-        <div className='flex flex-col min-w-screen sm:mt-5 sm:h-[40vh] md:h-[40vh] lg:h-[40vh] bg-zinc-800 '>
+        <div className='flex flex-col min-w-screen sm:h-[50vh] md:h-[40vh] lg:h-[40vh] bg-zinc-800 '>
             <div className='flex w-full bg-zinc-800 h-[80vh] sm:mt-5 md:h-48 items-center justify-center'>
             <img src={logoTmdb} className='sm:w-32 sm:h-32 md:h-48 md:w-48 '/>
             <div className=' text-left sm:ml-5'>

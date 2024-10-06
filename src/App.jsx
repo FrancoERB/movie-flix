@@ -32,9 +32,9 @@ function App() {
 
   useEffect(() => {
     if(theme === 'dark'){
-      document.querySelector('body').classList.add('dark');
-    }else{
-      document.querySelector('body').classList.remove('dark');
+      document.querySelector('body').classList.add('darkBody');
+    }else {
+      document.querySelector('body').classList.remove('darkBody');
     }
   },[theme])
 
@@ -43,7 +43,7 @@ function App() {
   }
 
   return (
-    <div className='w-full h-full dark:bg-slate-950 overflow-x-hidden'>
+    <div className='w-full min-h-[100vh] dark:bg-black overflow-x-hidden'>
       <Header btnToggleTheme={handleChangeTheme} theme={theme}/>
       <Routes>
           <Route path='/' element={<Login />}/>
