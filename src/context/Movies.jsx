@@ -1,6 +1,5 @@
-import { createContext, useContext } from "react";
-import { useState } from "react";
 import axios from "axios";
+import { createContext, useContext, useState } from "react";
 import Swal from "sweetalert2";
 
 export const MoviesContext = createContext();
@@ -8,17 +7,17 @@ export const MoviesContext = createContext();
 export const MoviesProvider = ({ children }) => {
   const apiKey = "6aa686f0c4b6edd137850466238559bd";
   const [favMovies, setFavMovies] = useState([]);
-  
+
   //Function for get all movies from api//
   const getMoviesFromApi = (pageNumber) => {
     try {
       return axios
         .get(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&include_adult=true&include_video=true&language=es-ES&page=${pageNumber}&sort_by=popularity.desc`
+          `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&include_adult=false&include_video=true&language=es-ES&page=${pageNumber}&sort_by=popularity.desc`
         )
         .then((res) => {
-          console.log('Api res:', res);
-          
+          console.log("Api res:", res);
+
           return res.data;
         });
     } catch (error) {
